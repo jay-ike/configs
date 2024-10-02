@@ -1,0 +1,19 @@
+{
+    "name": "custom-snippets",
+    "contributes": {
+        "snippets": [
+            {
+                "language": ["ejs"],
+                "path": "./ejs-snippets.json"
+            },
+            {
+                "language": ["njk"],
+                "path": "./nunjucks.json"
+            },
+            {
+                "language": ["javascript"],
+                "path": "./node-snippets.json"
+            }
+        ]
+    }
+}
