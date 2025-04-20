@@ -89,4 +89,14 @@ return {
             },
         },
     },
+    {
+        'akinsho/git-conflict.nvim',
+        lazy = false,
+        version = "v2.1.0",
+        config = {
+            default_mappings = true,
+            default_commands = true,
+            list_opener = "copen",
+        }
+    }
 }

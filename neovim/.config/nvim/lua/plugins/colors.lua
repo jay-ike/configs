@@ -17,6 +17,7 @@ return {
                 vim.ui.select(schemes_candidates, {
                     promt = "Select colorscheme",
                 }, function(selected)
+                    local selection = selected
                     if not selected then
                         return
                     end
@@ -24,18 +25,21 @@ return {
                         -- do not select light themes
                         local random_scheme =
                             schemes_candidates[math.random(2, #schemes_candidates - 2)]
-                        vim.cmd.colorscheme(random_scheme)
-                        print(random_scheme)
-                    elseif selected == "light" then
+                        selection = random_scheme
+                    end
+                    if selection == "light" then
                         vim.cmd("set background=light")
                         vim.cmd("TransparentDisable")
                     else
-                        vim.cmd.colorscheme(selected)
-                        print(selected)
+                            vim.cmd.colorscheme(selection)
                     end
                 end)
             end)
-            vim.cmd[[colorscheme tokyonight]]
+            require("tokyonight").setup({
+                transparent = true,
+                terminal_colors = true
+            })
+            vim.cmd [[colorscheme tokyonight]]
         end,
     },
     {
@@ -43,9 +47,8 @@ return {
         lazy = false,
         config = function()
             require("transparent").setup({
-                -- NOTE: add "NormalFloat" to extra_groups if you stop using TSContext
                 extra_groups = { "NvimTreeNormal", "FloatBorder" }, -- table: additional groups that should be cleared
-                exclude_groups = { "TreesitterContext" }, -- table: groups you don't want to clear
+                exclude_groups = { "TreesitterContext" },           -- table: groups you don't want to clear
             })
             vim.cmd("TransparentDisable")
         end,

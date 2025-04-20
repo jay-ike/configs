@@ -1,4 +1,10 @@
+vim.g.mapleader = " "
+
 vim.opt.guicursor = ""
+
+vim.g.netrw_browse_split = 0
+vim.g.netrw_banner = 0
+vim.g.netrw_winsize = 25
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
@@ -29,5 +35,25 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
+vim.opt.spell = true
+vim.opt.spelllang = { "en_gb" }
 
 
+-- default position
+vim.opt.scrolloff = 8     -- scroll page when cursor is 8 lines from top/bottom
+vim.opt.sidescrolloff = 8 -- scroll page when cursor is 8 spaces from left/right
+
+-- ex line
+vim.o.ls = 0
+vim.o.ch = 0
+
+-- search
+vim.opt.hlsearch = true
+vim.opt.incsearch = true
+vim.opt.ignorecase = true
+
+vim.filetype.add({
+    extension = { templ = 'templ' }
+})
+
+vim.g.have_nerd_font = true

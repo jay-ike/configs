@@ -79,7 +79,7 @@ return {
                     end
                 end,
                 ensure_installed = {
-                    "tsserver",
+                    "ts_ls",
                     "lua_ls",
                     "rust_analyzer",
                     "gopls",

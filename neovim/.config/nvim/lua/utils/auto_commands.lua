@@ -1,22 +1,7 @@
-require("plugins.set")
-require("plugins.remap")
-require("plugins.lazy_init")
-
-local augroup = vim.api.nvim_create_augroup
-local ThePrimeagenGroup = augroup('ThePrimeagen', {})
-
-local autocmd = vim.api.nvim_create_autocmd
+local autocmd = vim.api.nvim_create_autocmd;
+local augroup = vim.api.nvim_create_augroup;
+local JayIkeGroup = augroup('JayIke', {})
 local yank_group = augroup('HighlightYank', {})
-
-function R(name)
-    require("plenary.reload").reload_module(name)
-end
-
-vim.filetype.add({
-    extension = {
-        templ = 'templ',
-    }
-})
 
 autocmd('TextYankPost', {
     group = yank_group,
@@ -29,14 +14,15 @@ autocmd('TextYankPost', {
     end,
 })
 
-autocmd({"BufWritePre"}, {
-    group = ThePrimeagenGroup,
+-- remove extra spaces at the end of every line before writing
+autocmd({ "BufWritePre" }, {
+    group = JayIkeGroup,
     pattern = "*",
     command = [[%s/\s\+$//e]],
 })
 
 autocmd('LspAttach', {
-    group = ThePrimeagenGroup,
+    group = JayIkeGroup,
     callback = function(e)
         local opts = { buffer = e.buf }
         vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
@@ -52,7 +38,41 @@ autocmd('LspAttach', {
     end
 })
 
-vim.g.netrw_browse_split = 0
-vim.g.netrw_banner = 0
-vim.g.netrw_winsize = 25
-vim.cmd("source ~/.vim/jslint_wrapper_vim.vim")
+
+autocmd('BufWritePost', {
+  pattern = { '*tmux.conf' },
+  command = "execute 'silent !tmux source <afile> --silent'",
+})
+
+autocmd('BufWritePost', {
+  pattern = { 'yazi.toml' },
+  command = "execute 'silent !yazi --clear-cache'",
+})
+
+-- autocmd('BufWritePost', {
+--   pattern = { 'config.fish' },
+--   command = "execute 'silent !source <afile> --silent'",
+-- })
+
+autocmd({ 'BufNewFile', 'BufFilePre', 'BufRead' }, {
+  pattern = { '*.mdx', '*.md' },
+  callback = function()
+    vim.cmd [[set filetype=markdown wrap linebreak nolist nospell]]
+  end,
+})
+
+autocmd({ 'BufRead' }, {
+  pattern = { '*.conf' },
+  callback = function()
+    vim.cmd [[set filetype=sh]]
+  end,
+})
+
+autocmd({ 'BufRead' }, {
+  -- https://ghostty.org/docs/config/reference
+  pattern = { 'config' },
+  callback = function()
+    vim.cmd [[set filetype=toml]]
+    vim.cmd [[LspStop]]
+  end,
+})
