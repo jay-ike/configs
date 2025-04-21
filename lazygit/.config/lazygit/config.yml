@@ -1,0 +1,35 @@
+gui:
+  theme:
+    activeBorderColor:
+      - "blue"
+      - "bold"
+    inactiveBorderColor:
+      - "white"
+    optionsTextColor:
+      - "cyan"
+    selectedLineBgColor:
+      - "black"
+    selectedRangeBgColor:
+      - "blue"
+    cherryPickedCommitBgColor:
+      - "magenta"
+    cherryPickedCommitFgColor:
+      - "white"
+    unstagedChangesColor:
+      - "red"
+    defaultFgColor:
+      - "white"
+    searchingActiveBorderColor:
+      - "yellow"
+  spinner:
+    frames: ["▖", "▘", "▝", "▗"]
+    interval: 70
+keybinding:
+  universal:
+    quit: 'q'
+    quitWithoutChangingDirectory: 'Q'
+    togglePanel: '<tab>'
+  files:
+    toggleStagedAll: 'A'
+    viewResetOptions: 'r'
+
