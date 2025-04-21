@@ -1,0 +1,77 @@
+#!/usr/bin/env  bash
+
+used_directories="$HOME/.most_used_directories"
+add_directory(){
+    local directories_file=${2:-$used_directories}
+    if [ -n "$1" ]; then
+        ocurrence=$(grep "$1" "$directories_file")
+        if [ -z "$ocurrence" ]; then
+            printf "\n%s" "$1" >> "$directories_file"
+        fi
+    else 
+        exit 1
+    fi
+    exit 0
+}
+
+remove_directory(){
+    local directories_file=${2:-$used_directories}
+    if [ -n "$1" ]; then
+        result=$(sort -u "$directories_file" | grep -v "$1")
+        printf "%s" "$result" >| "$directories_file"
+    else
+        exit 1
+    fi
+    exit 0
+}
+
+add_read_books(){
+    local default_file="$HOME/read_books.txt"
+    local default_source="$HOME/all_books.txt"
+    local header="/****** Definitive List of Read Books By Jay Ike *******/"
+    if [ ! -f "$default_file" ]; then
+        echo "$header" >> "$default_file"
+    fi
+    default_source=${1:-$default_source}
+    files=$(fzf < "${1:-$default_source}")
+    if [ -n "$files" ]; then
+        printf "\n%s" "$files" >> "$default_file"
+    fi
+}
+
+open_project(){
+    projects_root="$HOME/Projects"
+    project_path=$(fzf < <(find "$projects_root/Work" "$projects_root/Public_Repos" "$projects_root/Personal" -mindepth 1 -maxdepth 1 -type d))
+    if [ -n "$project_path" ]; then
+        name="$(basename "$project_path")"
+        tmux neww -S -n "$name" -c "$project_path"
+    fi 
+}
+
+open_most_used_directories(){
+    directories_file="${1:-$used_directories}"
+    if [ -f "$directories_file" ]; then
+        sort -u "$directories_file" | xargs -L1 tmux neww -S -c  
+    fi
+}
+while [ $# -gt 0 ]; do
+    if [[ $1 == *"-"* ]];then
+        param="${1/-/}"
+        declare "$param"="$2"
+    fi
+    shift 1
+    if [ -n "$type" ]; then 
+        break
+    fi
+done
+
+if [ -n "$type" ]; then
+    case $type in   
+        ab) add_read_books "$2";;
+        rd) remove_directory "$2" "$3";;
+        ad) add_directory "$2" "$3";;
+        op) open_project ;;
+        omud) open_most_used_directories "$2";;
+        *) echo -n "bad usage of the command";;
+    esac
+fi

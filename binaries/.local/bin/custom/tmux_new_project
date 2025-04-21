@@ -1,0 +1,103 @@
+#!/usr/bin/env bash
+factory="$(printf '\U1F3D7')"
+
+print_menu(){
+    local function_arguments=("$@")
+    local selected_item="$1"
+    local menu_items=("${function_arguments[@]:1}")
+    local menu_size="${#menu_items[@]}"
+    echo "Select the type of project you want to create"
+    for((i=0; i < menu_size; ++i))
+    do
+        if [ "$i" = "$selected_item" ]
+        then
+            printf "$factory "
+            echo -en "\x1b[38;5;79;1;5m${menu_items[i]}\x1b[0m\n"
+        else
+            echo "   ${menu_items[i]}"
+        fi
+    done
+}
+
+run_menu(){
+    local function_arguments=("$@")
+    local selected_item="$1"
+    local menu_items=("${function_arguments[@]:1}")
+    local menu_size="${#menu_items[@]}"
+    local menu_limit=$((menu_size - 1))
+
+    clear
+    print_menu "$selected_item" "${menu_items[@]}"
+
+    while read -rsn1 input
+    do 
+    case "$input" 
+    in
+        $'\x1B')
+            read -rsn1 -t 0.1 input
+            if [ "$input" = "[" ]
+            then
+                read -rsn1 -t 0.1 input
+                case "$input"
+                in
+                    A)
+                        if [ "$selected_item" -ge 1 ]
+                        then
+                            selected_item=$((selected_item -1))
+                        else
+                            selected_item=$menu_limit
+                        fi
+                        clear
+                        print_menu "$selected_item" "${menu_items[@]}"
+                        ;;
+                    B)
+                        if [ "$selected_item" -lt "$menu_limit" ]
+                        then
+                            selected_item=$((selected_item + 1))
+                        else
+                            selected_item=0
+                        fi
+                        clear
+                        print_menu "$selected_item" "${menu_items[@]}"
+                        ;;
+                esac
+            fi
+            read -rsn5 -t 0.1 input
+            ;;
+            "")
+                return "$selected_item"
+                ;;
+        *)
+            clear
+            exit 1
+            ;;
+        esac
+    done
+}
+selected_item=0
+menu_items=('Personal Project' 'Public Repository' 'Work Project')
+run_menu "$selected_item" "${menu_items[@]}"
+menu_result="$?"
+echo
+project_path=""
+case "$menu_result"
+in
+    0)
+        project_path="$HOME/Projects/Personal"
+        ;;
+    1)
+        project_path="$HOME/Projects/Public_Repos"
+        ;;
+    2)
+        project_path="$HOME/Projects/Work"
+        ;;
+esac
+echo "the project path is $project_path"
+
+unset menu_items
+
+read -r -p 'enter the project name : ' project_name
+
+if [ -n "$project_name" ]; then
+    mkdir -p "$project_path/$project_name"
+fi
