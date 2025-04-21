@@ -1,6 +1,5 @@
 
-local local_plugins = {
-    {
+return  {
         "ThePrimeagen/harpoon",
         branch = "harpoon2",
         dependencies = {"nvim-lua/plenary.nvim"},
@@ -21,8 +20,4 @@ local local_plugins = {
             vim.keymap.set("n", "<leader><C-n>", function() harpoon:list():replace_at(3) end)
             vim.keymap.set("n", "<leader><C-s>", function() harpoon:list():replace_at(4) end)
         end
-    },
-}
-
-return local_plugins
-
+    }
