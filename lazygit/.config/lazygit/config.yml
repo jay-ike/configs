@@ -22,7 +22,7 @@ gui:
     searchingActiveBorderColor:
       - "yellow"
   spinner:
-    frames: ["▖", "▘", "▝", "▗"]
+    frames: [ '⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏' ]
     interval: 70
 keybinding:
   universal:

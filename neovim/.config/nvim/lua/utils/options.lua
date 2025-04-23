@@ -43,13 +43,7 @@ vim.opt.spelllang = { "en_gb" }
 vim.opt.scrolloff = 8     -- scroll page when cursor is 8 lines from top/bottom
 vim.opt.sidescrolloff = 8 -- scroll page when cursor is 8 spaces from left/right
 
--- ex line
-vim.o.ls = 0
-vim.o.ch = 0
-
 -- search
-vim.opt.hlsearch = true
-vim.opt.incsearch = true
 vim.opt.ignorecase = true
 
 vim.filetype.add({
