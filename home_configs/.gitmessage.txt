@@ -1,0 +1,34 @@
+
+# <type>(optional-scope): <short summary>
+#
+# Example:
+# feat(install-hub): add validation for missing equipment name
+#
+# Types:
+# - feat:     A new feature
+# - fix:      A bug fix
+# - chore:    Routine task (e.g. build, config)
+# - docs:     Documentation only changes
+# - style:    Code formatting (no logic change)
+# - refactor: Code restructuring (no behavior change)
+# - perf:     Performance improvement
+# - test:     Adding or fixing tests
+#
+# ------------------------ >8 ------------------------
+#
+# Body (optional):
+# - Use this to explain what and why
+# - Be concise but descriptive
+# - Wrap text at 72 characters
+#
+# Example:
+# Adds logic to check if the equipment name is empty or missing.
+# If invalid, the tool returns a formatted error. This ensures that
+# users can install hubs with a clear identifier.
+#
+# Footer (optional):
+# - Reference issues or tasks
+#
+# Example:
+# Closes ADM-431
+# Related to #221

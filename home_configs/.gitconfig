@@ -1,0 +1,23 @@
+[user]
+	name = Ndimah Tchougoua
+	email = ndimah22@protonmail.com
+[core]
+	editor = nvim
+	autocrlf = input
+    excludesfile = ~/.gitignore_global
+
+[commit]
+    template = ~/.gitmessage.txt
+[init]
+	defaultBranch = main
+[credential "https://github.com"]
+	helper =
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper =
+	helper = !/usr/bin/gh auth git-credential
+[alias]
+	brcd = branch --sort=-committerdate
+    ca = commit -a
+[http]
+	postBuffer = 524288000
