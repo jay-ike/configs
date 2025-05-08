@@ -215,7 +215,7 @@ bar {
 }
 bindsym $mod+u mode "$utilities_launcher"
 
-set $utilities_launcher [l]ibreoffice [i]nkscape [e]xaile [h]aruna [f]igma [z]enkit [Z]eal [c]ode [k]onsole [g]imp [a]ndroid-studio
+set $utilities_launcher [l]ibreoffice [i]nkscape [e]xaile [h]aruna [f]igma [z]enkit [Z]eal [k]onsole [g]imp [a]ndroid-studio
 
 mode "$utilities_launcher" {
         bindsym l exec --no-startup-id libreoffice
@@ -223,10 +223,9 @@ mode "$utilities_launcher" {
         bindsym g exec --no-startup-id gimp
         bindsym e exec --no-startup-id exaile
         bindsym h exec --no-startup-id haruna
-        bindsym f exec --no-startup-id figma-linux
+        bindsym f exec --no-startup-id DRI_PRIME=1 figma-linux
         bindsym z exec "i3-msg workspace $ws5, exec zenkit"
         bindsym Shift+z exec "i3-msg workspace $ws10, exec zeal"
-        bindsym c exec code
         bindsym k exec --no-startup-id "konsole -e tmux new -A -s jay-ike -n 'jay-ike configs'"
         bindsym a exec --no-startup-id studio.sh
         bindsym Escape mode "default"
@@ -240,15 +239,13 @@ exec "xautolock -detectsleep -time 10 -locker \"i3lock -i $HOME/Pictures/.wallpa
 bindsym $mod+b mode "$browser_launcher"
 bindsym XF86HomePage exec firefox
 bindsym XF86Calculator exec kcalc
-set $browser_launcher [f]irefox firefox-[n]ightly [c]alibre [e]piphany [C]hromium [y]andex [t]or
+set $browser_launcher firefox-[n]ightly [c]alibre [e]piphany [C]hromium [y]andex [t]or
 mode "$browser_launcher" {
-        bindsym f exec firefox
-        bindsym n exec firefox-nightly
+        bindsym n exec DRI_PRIME=1 firefox-nightly
         bindsym c exec calibre
-        bindsym b exec brave
         bindsym e exec epiphany
         bindsym t exec torbrowser-launcher
-        bindsym Shift+c exec chromium
+        bindsym Shift+c exec DRI_PRIME=1 chromium
         bindsym y exec yandex-browser-stable
         bindsym Escape mode "default"
         bindsym Return mode "default"
