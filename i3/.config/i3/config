@@ -215,7 +215,7 @@ bar {
 }
 bindsym $mod+u mode "$utilities_launcher"
 
-set $utilities_launcher [l]ibreoffice [i]nkscape [e]xaile [h]aruna [f]igma [z]enkit [Z]eal [k]onsole [g]imp [a]ndroid-studio
+set $utilities_launcher [l]ibreoffice [i]nkscape [e]xaile [h]aruna [f]igma [z]enkit [Z]eal [k]onsole [g]imp [a]ndroid-studio wez[t]erm
 
 mode "$utilities_launcher" {
         bindsym l exec --no-startup-id libreoffice
@@ -225,8 +225,8 @@ mode "$utilities_launcher" {
         bindsym h exec --no-startup-id haruna
         bindsym f exec --no-startup-id DRI_PRIME=1 figma-linux
         bindsym z exec "i3-msg workspace $ws5, exec zenkit"
+        bindsym t exec --no-startup-id wezterm
         bindsym Shift+z exec "i3-msg workspace $ws10, exec zeal"
-        bindsym k exec --no-startup-id "konsole -e tmux new -A -s jay-ike -n 'jay-ike configs'"
         bindsym a exec --no-startup-id studio.sh
         bindsym Escape mode "default"
         bindsym Return mode "default"
@@ -251,9 +251,8 @@ mode "$browser_launcher" {
         bindsym Return mode "default"
 }
 bindsym $mod+y exec systemsettings5
-bindsym $mod+e exec dolphin
 assign [window_role="browser" instance="figma-linux"] $ws3
-assign [class="konsole"] $ws1
+assign [class="wezterm"] $ws1
 assign [class="Inkscape"] $ws3
 assign [class="Gimp"] $ws3
 assign [instance="^exaile$"]  $ws4
@@ -267,7 +266,6 @@ assign [instance="^telegram-desktop$"] $ws5
 assign [instance="^discord$"] $ws5
 assign [class="thunderbird"] $ws5
 assign [class="transmission"] $ws5
-assign [class="dolphin"] $ws6
 assign [instance="systemsettings5"] $ws7
 assign [class="Vmware"] $ws7
 assign [instance="soffice"] $ws8
