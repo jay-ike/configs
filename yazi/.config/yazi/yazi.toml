@@ -1,18 +1,23 @@
 [manager]
 ratio = [1, 2, 4]
-sort_by = "mtime"
-sort_sensitive = true
-sort_reverse = true
+sort_by = "alphabetical"
+sort_sensitive = false
+sort_reverse = false
 sort_dir_first = true
-linemode = "none"
+sort_translit = false
+linemode = "size"
 show_hidden = true
 show_symlink = true
+title_format = "Yazi: {cwd}"
 
 [preview]
 tab_size = 2
 max_width = 2000
 max_height = 1200
 cache_dir = ""
+image_filter = "triangle"
+image_quality = 75
+sixel_fraction = 15
 ueberzug_scale = 1
 ueberzug_offset = [0, 0, 0, 0]
 
@@ -43,6 +48,9 @@ play = [
   { run = 'mpv "%1"', orphan = true, for = "windows" },
   { run = '''mediainfo "$1"; echo "Press enter to exit"; read''', block = true, desc = "Show media info", for = "unix" },
 ]
+view = [
+    { run = 'haruna "$@"', desc = "View video" }
+]
 
 [open]
 rules = [
@@ -62,7 +70,7 @@ rules = [
     "reveal",
   ] },
   { mime = "video/*", use = [
-    "play",
+    "view",
     "reveal",
   ] },
   { mime = "audio/*", use = [

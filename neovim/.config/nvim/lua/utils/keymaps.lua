@@ -49,7 +49,7 @@ end)
 
 vim.keymap.set('n', '<leader>co', '<cmd>GitConflictChooseOurs<CR>')
 vim.keymap.set('n', '<leader>ct', '<cmd>GitConflictChooseTheirs<CR>')
-vim.keymap.set('n', '<leader>cb', '<cmd>GitConflictChooseBoth<CR>')
+vim.keymap.set('n', '<leader>ch', '<cmd>GitConflictChooseBoth<CR>')
 vim.keymap.set('n', '<leader>c0', '<cmd>GitConflictChooseNone<CR>')
 vim.keymap.set('n', '<leader>[x', '<cmd>GitConflictPrevConflict<CR>')
 vim.keymap.set('n', '<leader>]x', '<cmd>GitConflictNextConflict<CR>')

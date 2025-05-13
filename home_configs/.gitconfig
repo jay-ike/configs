@@ -8,6 +8,8 @@
 
 [commit]
     template = ~/.gitmessage.txt
+[push]
+    autoSetupRemote = true
 [init]
 	defaultBranch = main
 [credential "https://github.com"]
