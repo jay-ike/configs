@@ -26,7 +26,7 @@ prepend_keymap = [
 		"c",
 		"a",
 	], run = "plugin compress", desc = "Archive selected files" },
-    { on = ["p", "m"], run = "plugin mount", desc = "Mount disk"
+    { on = ["p", "m"], run = "plugin mount", desc = "Mount disk"}
 ]
 
 keymap = [
@@ -39,11 +39,8 @@ keymap = [
 	{ on = "R", run = "reload", desc = "Refresh the current directory" },
 
 	# Hopping
-	{ on = "u", run = "arrow -1", desc = "Move cursor up" },
-	{ on = "e", run = "arrow 1", desc = "Move cursor down" },
-
-	{ on = "<Up>", run = "arrow -1", desc = "Move cursor up" },
-	{ on = "<Down>", run = "arrow 1", desc = "Move cursor down" },
+	{ on = "k", run = "arrow -1", desc = "Move cursor up" },
+	{ on = "j", run = "arrow 1", desc = "Move cursor down" },
 
 	{ on = "<C-u>", run = "arrow -50%", desc = "Move cursor up half page" },
 	{ on = "<C-e>", run = "arrow 50%", desc = "Move cursor down half page" },
@@ -62,11 +59,8 @@ keymap = [
 	# Navigation
 	{ on = "n", run = "leave", desc = "Go back to the parent directory" },
 
-	{ on = "<Left>", run = "leave", desc = "Go back to the parent directory" },
-	{ on = "<Right>", run = "enter", desc = "Enter the child directory" },
-
-	{ on = ["g", "l"], run = "back", desc = "Go back to the previous directory" },
-	{ on = ["g", "h"], run = "forward", desc = "Go forward to the next directory" },
+	{ on = "h", run = "leave", desc = "Go back to the parent directory" },
+	{ on = "l", run = "enter", desc = "Enter the child directory" },
 
 	# Selection
 	{ on = "<Space>", run = ["toggle", "arrow 1"], desc = "Toggle the current selection state" },
@@ -78,10 +72,9 @@ keymap = [
 	# Find
 	{ on = "<C-p>", run = "plugin fzf", desc = "Jump to a directory or reveal a file using fzf" },
 	{ on = ["z", "o"], run = "plugin zoxide", desc = "Jump to a directory using zoxide" },
-	# { on = "f", run = "search fd", desc = "Search files by name using fd" },
+	{ on = "f", run = "search fd", desc = "Search files by name using fd" },
 	{ on = "F", run = "search rg", desc = "Search files by content using ripgrep" },
 	{ on = "<C-s>", run = "escape --search", desc = "Cancel the ongoing search" },
-	{ on = "f", run = "filter --smart", desc = "Filter files" },
 	{ on = "/", run = "find --smart", desc = "Find next file" },
 	{ on = "?", run = "find --previous --smart", desc = "Find previous file" },
 	{ on = "n", run = "find_arrow", desc = "Go to the next found" },
@@ -104,7 +97,6 @@ keymap = [
 
 	# Rename
 	{ on = ["c", "w"], run = "rename --empty=all", desc = "Rename selected file(s)" },
-	{ on = "k", run = "rename --cursor=start", desc = "Rename selected file(s)" },
 	{ on = "a", run = "rename --cursor=before_ext", desc = "Rename selected file(s)" },
 	{ on = "A", run = "rename --cursor=end", desc = "Rename selected file(s)" },
 
@@ -191,8 +183,8 @@ keymap = [
 [spot]
 keymap = [
 	# Navigation
-	{ on = "u", run = "arrow -1", desc = "Move up" },
-	{ on = "e", run = "arrow 1", desc = "Move down" },
+	{ on = "j", run = "arrow -1", desc = "Move up" },
+	{ on = "k", run = "arrow 1", desc = "Move down" },
 
 	# Close
 	{ on = "<Esc>", run = "close", desc = "Close spotter" },
@@ -214,9 +206,6 @@ keymap = [
 	{ on = "<C-c>", run = "close", desc = "Close task manager" },
 	{ on = "w", run = "close", desc = "Close task manager" },
 
-	{ on = "u", run = "arrow -1", desc = "Move cursor up" },
-	{ on = "e", run = "arrow 1", desc = "Move cursor down" },
-
 	{ on = "<Up>", run = "arrow -1", desc = "Move cursor up" },
 	{ on = "<Down>", run = "arrow 1", desc = "Move cursor down" },
 
@@ -235,9 +224,6 @@ keymap = [
 	{ on = "<C-[>", run = "close", desc = "Cancel selection" },
 	{ on = "<C-c>", run = "close", desc = "Cancel selection" },
 	{ on = "<Enter>", run = "close --submit", desc = "Submit the selection" },
-
-	{ on = "u", run = "arrow -1", desc = "Move cursor up" },
-	{ on = "e", run = "arrow 1", desc = "Move cursor down" },
 
 	{ on = "<Up>", run = "arrow -1", desc = "Move cursor up" },
 	{ on = "<Down>", run = "arrow 1", desc = "Move cursor down" },
@@ -274,7 +260,7 @@ keymap = [
 	# Word-wise movement
 	{ on = "b", run = "backward", desc = "Move back to the start of the current or previous word" },
 	{ on = "w", run = "forward", desc = "Move forward to the start of the next word" },
-	{ on = "h", run = "forward --end-of-word", desc = "Move forward to the end of the current or next word" },
+	# { on = "h", run = "forward --end-of-word", desc = "Move forward to the end of the current or next word" },
 	{ on = "<A-b>", run = "backward", desc = "Move back to the start of the current or previous word" },
 	{ on = "<A-f>", run = "forward --end-of-word", desc = "Move forward to the end of the current or next word" },
 
@@ -309,7 +295,7 @@ keymap = [
 	{ on = "P", run = "paste --before", desc = "Paste the copied characters before the cursor" },
 
 	# Undo/Redo
-	{ on = "l", run = "undo", desc = "Undo the last operation" },
+	{ on = "u", run = "undo", desc = "Undo the last operation" },
 	{ on = "<C-r>", run = "redo", desc = "Redo the last operation" },
 
 	# Help
@@ -344,8 +330,6 @@ keymap = [
 	{ on = "<C-c>", run = "close", desc = "Hide the help" },
 
 	# Navigation
-	{ on = "u", run = "arrow -1", desc = "Move cursor up" },
-	{ on = "e", run = "arrow 1", desc = "Move cursor down" },
 
 	{ on = "<Up>", run = "arrow -1", desc = "Move cursor up" },
 	{ on = "<Down>", run = "arrow 1", desc = "Move cursor down" },
