@@ -332,7 +332,7 @@ mode "$productivity_mode"{
         bindsym Shift+k exec klavaro
         bindsym b exec thunderbird
         bindsym v exec vmware
-        bindsym t exec telegram-desktop
+        bindsym t exec Telegram
         bindsym m exec moderncsv
         bindsym m exec --no-startup-id kcalc
         bindsym Shift+d exec --no-startup-id discord
@@ -355,8 +355,8 @@ mode "$token_mode" {
 set $bluetooth_connect_mode connect [h]eadphone [s]peaker
 bindsym $mod+Shift+b mode "$bluetooth_connect_mode"
 mode "$bluetooth_connect_mode" {
-    bindsym h exec "bluetoothctl connect `bluetoothctl devices | grep 'Jabra Elite' | cut -d' ' -f2`"
-    bindsym Shift+h exec "bluetoothctl disconnect `bluetoothctl devices | grep 'Jabra Elite' | cut -d' ' -f2`"
+    bindsym h exec "bluetoothctl connect `bluetoothctl devices | grep 'WF-C510' | cut -d' ' -f2`"
+    bindsym Shift+h exec "bluetoothctl disconnect `bluetoothctl devices | grep 'WF-C510' | cut -d' ' -f2`"
     bindsym s exec "bluetoothctl connect `bluetoothctl devices | grep SRS-XB12 | cut -d' ' -f2`"
     bindsym Shift+s exec "bluetoothctl disconnect `bluetoothctl devices | grep SRS-XB12 | cut -d' ' -f2`"
     bindsym Escape mode "default"
