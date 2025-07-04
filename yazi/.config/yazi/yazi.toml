@@ -122,6 +122,7 @@ rules = [
 
   { mime = "*", use = [
     "open",
+    "view",
     "reveal",
   ] },
 ]
