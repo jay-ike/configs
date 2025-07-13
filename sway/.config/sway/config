@@ -6,8 +6,11 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:SF Pro Text 12
-
+font pango:SF Pro Text 1
+default_border none
+default_floating_border none
+titlebar_padding 1
+titlebar_border_thickness 0
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
@@ -30,11 +33,10 @@ exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
 # Changed i3status refresh to use a sway-compatible method if you use swaybar with i3status
-set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 bindsym button1 nop
 bindsym button2 nop
 
@@ -50,7 +52,7 @@ bindsym $mod+Shift+q kill
 # start dmenu (a program launcher)
 # dmenu_run might work via XWayland, but a Wayland-native option like wofi is preferred.
 # For simplicity, keeping dmenu_run for now. If issues, switch to wofi.
-bindsym $mod+d exec --no-startup-id wofi
+bindsym $mod+d exec --no-startup-id wofi --show drun
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -193,27 +195,23 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Start swaybar to display a workspace bar (plus the system information i3status
-# finds out, if available)
 bar {
     id 1
     position top
-    # swaybar is the default bar for Sway. It can use i3status as a status_command.
-    # Transparency is handled by swaybar by default if your compositor supports it (Sway does).
-    status_command i3status
+    mode hide
+    status_command waybar
     font pango:SF Pro Text 10
     colors {
         background #000000
         statusline #ffffff
         separator #666666
-
         focused_workspace #285577 #0dcbb5 #3a3a3a
         binding_mode    #285577 #f1f2c2 #3a3a3a
     }
 }
-bindsym $mod+u mode "$utilities_launcher"
 
-set $utilities_launcher [l]ibreoffice [i]nkscape [e]xaile [h]aruna [f]igma [z]enkit [Z]eal [k]onsole [g]imp [a]ndroid-studio wez[t]erm
+set $utilities_launcher "Utilities"
+bindsym $mod+u mode "$utilities_launcher"
 
 mode "$utilities_launcher" {
     bindsym l exec --no-startup-id libreoffice
@@ -241,7 +239,7 @@ bindsym $mod+Mod1+l exec "swaylock -i $HOME/Pictures/.wallpaper.png"
 bindsym $mod+b mode "$browser_launcher"
 bindsym XF86HomePage exec firefox
 bindsym XF86Calculator exec kcalc
-set $browser_launcher firefox-[n]ightly [c]alibre [e]piphany [C]hromium [y]andex [t]or
+set $browser_launcher "Browsers"
 mode "$browser_launcher" {
     # DRI_PRIME=1 might not be needed or handled differently in Wayland for discrete GPUs. Test it.
     bindsym n exec DRI_PRIME=1 firefox-nightly
@@ -274,7 +272,7 @@ assign [class="Vmware"] $ws7
 assign [instance="soffice"] $ws8
 assign [class="okular"] $ws8
 assign [class="code-oss"] $ws9
-assign [class="*charles*"] $ws5
+assign [class="charles"] $ws5
 assign [window_role="browser"] $ws2
 workspace_layout tabbed
 
@@ -282,7 +280,7 @@ workspace_layout tabbed
 bindsym XF86MonBrightnessUp exec brightnessctl s 10%+
 bindsym XF86MonBrightnessDown exec brightnessctl s 10%-
 
-set $music_mode [a]frican oldies [f]unk [F]rench-Rap [h]ip-hop [j]azz [m]editations [n]aija [p]op [r]&b [s]oul [R]eading
+set $music_mode "Playlists"
 # Exaile music player key bindings
 bindsym $mod+Mod1+p exec "exaile -p"
 bindsym $mod+Mod1+n exec "exaile -n"
@@ -291,7 +289,7 @@ bindsym $mod+Mod1+KP_Add exec "exaile -i 5"
 bindsym $mod+Mod1+KP_Subtract exec "exaile -l 5"
 bindsym $mod+Mod1+m mode "$music_mode"
 
-mode "$music_mode"{
+mode "$music_mode" {
     bindsym a exec "exaile -s && exaile '$HOME/Playlists/african oldies.m3u'"
     bindsym f exec "exaile -s && exaile '$HOME/Playlists/Funk.m3u'"
     bindsym Shift+f exec "exaile -s && exaile '$HOME/Playlists/French Rap.m3u'"
@@ -307,30 +305,12 @@ mode "$music_mode"{
     bindsym Return mode "default"
 }
 
-set $browser_mode [s]anet [m]artinfowler [w]iki [c]ss-tricks [C]odrops [z]lib [v]im [T]utflix [t]orrentgalaxy [W]hatsapp
-bindsym $mod+Mod1+space mode "$browser_mode"
-
-mode "$browser_mode"{
-    bindsym s exec "firefox-nightly --new-tab https://sanet.st"
-    bindsym m exec "firefox --new-tab https://martinfowler.com"
-    bindsym w exec "firefox --new-tab https://wiki.c2.com"
-    bindsym c exec "firefox-nightly --new-tab https://css-tricks.com"
-    bindsym Shift+c exec "firefox-nightly --new-tab https://tympanus.net/codrops/"
-    bindsym z exec "firefox-nightly --new-tab https://b-ok.africa"
-    bindsym v exec "firefox-nightly --new-tab https://vim.fandom.com"
-    bindsym Shift+t exec "firefox-nightly --new-tab https://tutflix.org"
-    bindsym t exec "firefox-nightly --new-tab https://torrentgalaxy.to"
-    bindsym Shift+w exec "firefox-nightly --new-tab https://web.whatsapp.com"
-    bindsym Escape mode "default"
-    bindsym Return mode "default"
-}
-
 bindsym F7 exec "swaymsg output DP-1 enable position 0 0, output eDP-1 enable position 1920 0"
 
-set $productivity_mode [e]moji [k]ontrast [K]lavaro [t]elegram [m]oderncsv [s]napclear [D]iscord [T]ransmission [v]mware thunder[b]ird [c]harles
+set $productivity_mode "Productivity"
 bindsym $mod+Mod1+o mode "$productivity_mode"
 
-mode "$productivity_mode"{
+mode "$productivity_mode" {
     bindsym e exec emoji-picker
     bindsym c exec /opt/charles/bin/charles
     bindsym k exec kontrast
@@ -339,7 +319,6 @@ mode "$productivity_mode"{
     bindsym v exec vmware
     bindsym t exec Telegram
     bindsym m exec moderncsv
-    bindsym m exec --no-startup-id kcalc
     bindsym Shift+d exec --no-startup-id discord
     bindsym s exec --no-startup-id snapclear
     bindsym Shift+t exec --no-startup-id transmission-qt
@@ -347,7 +326,7 @@ mode "$productivity_mode"{
     bindsym Return mode "default"
 }
 
-set $token_mode [g]ithub [G]itlab
+set $token_mode "Tokens"
 bindsym $mod+Shift+t mode "$token_mode"
 
 mode "$token_mode" {
@@ -358,7 +337,7 @@ mode "$token_mode" {
     bindsym Return mode "default"
 }
 
-set $bluetooth_connect_mode connect [h]eadphone [s]peaker
+set $bluetooth_connect_mode "Bluetooth"
 bindsym $mod+Shift+b mode "$bluetooth_connect_mode"
 mode "$bluetooth_connect_mode" {
     bindsym h exec "bluetoothctl connect `bluetoothctl devices | grep 'WF-C510' | cut -d' ' -f2`"
