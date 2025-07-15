@@ -350,3 +350,8 @@ mode "$bluetooth_connect_mode" {
 
 bindsym $mod+o exec --no-startup-id "orca"
 bindsym $mod+Shift+o exec "killall -9 orca"
+
+input type:keyboard {
+    xkb_layout us
+    xkb_variant intl
+}
