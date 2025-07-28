@@ -21,7 +21,7 @@
             "format": "{user-name}"
         },
         {
-            "key": "│ {#32}󰇅 hname   {#keys}│",
+            "key": "│ {#32}󰇅 host    {#keys}│",
             "type": "title",
             "format": "{host-name}"
         },
@@ -38,7 +38,7 @@
             "type": "kernel"
         },
         {
-            "key": "│ {#36} wm      {#keys}│",
+            "key": "│ {#36}󰇄 wm      {#keys}│",
             "type": "wm"
         },
         {
@@ -59,12 +59,12 @@
             "showPeCoreCount": true
         },
         {
-            "key": "│ {#34}󰉉 disk    {#keys}│",
+            "key": "│ {#34}󰋊 disk    {#keys}│",
             "type": "disk",
             "folders": "/"
         },
         {
-            "key": "│ {#36} memory  {#keys}│",
+            "key": "│ {#37}󰉉 memory  {#keys}│",
             "type": "memory"
         },
         {
