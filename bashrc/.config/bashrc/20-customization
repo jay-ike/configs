@@ -1,0 +1,38 @@
+# -----------------------------------------------------
+# OH My Bash
+# -----------------------------------------------------
+
+OSH=$HOME/.oh-my-bash
+
+OSH_THEME="powerbash10k"
+
+__PB10K_TOP_RIGHT="exitcode cmd_duration user_info python ruby clock "
+__PB10K_BOTTOM="char"
+
+DISABLE_AUTO_UPDATE="true"
+
+completions=(
+  git
+  ssh
+)
+
+aliases=(
+  general
+)
+
+plugins=(
+  battery
+  git
+  bashmarks
+  npm
+  nvm
+  golang
+  zoxide
+)
+
+BASH_CACHE_DIR=$HOME/.cache/oh-my-bash
+if [[ ! -d "$BASH_CACHE_DIR" ]]; then
+   mkdir "$BASH_CACHE_DIR"
+fi
+source /etc/profile
+source $OSH/oh-my-bash.sh

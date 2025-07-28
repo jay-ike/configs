@@ -1,0 +1,9 @@
+
+export ANDROID_HOME="/opt/android-sdk/"
+export CDPATH=".:/home/jay-ike/Documents/:/home/jay-ike/Projects/:/computing/miscellaneous/:/computing/Books/:/computing/Tutorials/"
+export PATH=$PATH:"$HOME/go/bin/":"/computing/android-studio/bin/":"/computing/flutter/bin/":"$HOME/.cargo/bin/":"$HOME/.local/bin"
+export DART_SDK=/computing/flutter/bin/cache/dart-sdk
+export VISUAL=nvim
+export EDITOR=nvim
+export XDG_CONFIG_HOME="$HOME/.config/"
+export NVM_DIR="$HOME/.nvm"
