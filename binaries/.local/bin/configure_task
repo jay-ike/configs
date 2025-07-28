@@ -8,7 +8,7 @@ add_directory(){
         if [ -z "$ocurrence" ]; then
             printf "\n%s" "$1" >> "$directories_file"
         fi
-    else 
+    else
         exit 1
     fi
     exit 0
@@ -40,18 +40,21 @@ add_read_books(){
 }
 
 open_project(){
-    projects_root="$HOME/Projects"
-    project_path=$(fzf < <(find "$projects_root/Work" "$projects_root/Public_Repos" "$projects_root/Personal" -mindepth 1 -maxdepth 1 -type d))
+    projects_root=${PROJECTS_PATH:-/computing/Projects}
+    project_path=$(\
+        find "$projects_root"/{Work,Public_Repos,Personal} -mindepth 1 -maxdepth 1 -type d\
+        | gum filter --limit 1 --placeholder 'Pick a Project' --prompt='📁 '
+)
     if [ -n "$project_path" ]; then
         name="$(basename "$project_path")"
         tmux neww -S -n "$name" -c "$project_path"
-    fi 
+    fi
 }
 
 open_most_used_directories(){
     directories_file="${1:-$used_directories}"
     if [ -f "$directories_file" ]; then
-        sort -u "$directories_file" | xargs -L1 tmux neww -S -c  
+        sort -u "$directories_file" | xargs -L1 tmux neww -S -c
     fi
 }
 while [ $# -gt 0 ]; do
@@ -60,13 +63,13 @@ while [ $# -gt 0 ]; do
         declare "$param"="$2"
     fi
     shift 1
-    if [ -n "$type" ]; then 
+    if [ -n "$type" ]; then
         break
     fi
 done
 
 if [ -n "$type" ]; then
-    case $type in   
+    case $type in
         ab) add_read_books "$2";;
         rd) remove_directory "$2" "$3";;
         ad) add_directory "$2" "$3";;

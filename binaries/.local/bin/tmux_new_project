@@ -30,8 +30,8 @@ run_menu(){
     print_menu "$selected_item" "${menu_items[@]}"
 
     while read -rsn1 input
-    do 
-    case "$input" 
+    do
+    case "$input"
     in
         $'\x1B')
             read -rsn1 -t 0.1 input
@@ -83,13 +83,13 @@ project_path=""
 case "$menu_result"
 in
     0)
-        project_path="$HOME/Projects/Personal"
+        project_path="/computing/Projects/Personal"
         ;;
     1)
-        project_path="$HOME/Projects/Public_Repos"
+        project_path="/computing/Projects/Public_Repos"
         ;;
     2)
-        project_path="$HOME/Projects/Work"
+        project_path="/computing/Projects/Work"
         ;;
 esac
 echo "the project path is $project_path"

@@ -19,7 +19,7 @@ startup_command = "yazi"
 
 [[session]]
 name = "Projects"
-path = "~/Projects"
+path = "$PROJECTS_PATH"
 startup_command = "configure_task -type op"
 
 [[session]]
