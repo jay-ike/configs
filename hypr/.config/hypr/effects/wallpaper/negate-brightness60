@@ -1,0 +1,2 @@
+convert $wallpaper -negate $used_wallpaper
+convert $used_wallpaper -brightness-contrast -40% $used_wallpaper

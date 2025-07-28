@@ -1,0 +1,1 @@
+convert $wallpaper -blur "10x30" $used_wallpaper

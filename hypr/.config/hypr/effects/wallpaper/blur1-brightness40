@@ -1,0 +1,2 @@
+convert $wallpaper -blur "50x30" $used_wallpaper
+convert $used_wallpaper -brightness-contrast -60% $used_wallpaper

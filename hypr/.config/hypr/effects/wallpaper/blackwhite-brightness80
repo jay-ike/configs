@@ -1,0 +1,2 @@
+convert $wallpaper -set colorspace Gray -separate -average $used_wallpaper
+convert $used_wallpaper -brightness-contrast -20% $used_wallpaper
