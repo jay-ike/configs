@@ -273,6 +273,7 @@ assign [class="okular"] $ws8
 assign [class="code-oss"] $ws9
 assign [class="*charles*"] $ws5
 assign [window_role="browser"] $ws2
+for_window [class="file-picker"] floating enable, resize set 800 800, move position center
 workspace_layout tabbed
 
 bindsym XF86MonBrightnessUp exec brightnessctl s 10%+

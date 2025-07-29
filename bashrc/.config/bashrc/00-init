@@ -9,3 +9,4 @@ export EDITOR=nvim
 export XDG_CONFIG_HOME="$HOME/.config/"
 export NVM_DIR="$HOME/.nvm"
 export FILE_MANAGER="wezterm -e yazi"
+export TERMCMD="wezterm start --always-new-process"
