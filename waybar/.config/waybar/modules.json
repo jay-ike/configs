@@ -70,7 +70,7 @@
         "format": ""
     },
     "custom/tools": {
-        "format": "",
+        "format": "  ",
         "tooltip-format": "Tools"
     },
     "custom/cliphist": {
@@ -183,7 +183,7 @@
         "tooltip": false
     },
     "cpu": {
-        "format": " {usage}% ",
+        "format": "  {usage}% ",
         "on-click": "~/.config/ml4w/settings/system-monitor.sh"
     },
     "memory": {

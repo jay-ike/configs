@@ -39,8 +39,8 @@ local act = wezterm.action
 ---@diagnostic disable: missing-fields
 local config = {
     -- rendering
-    front_end = "WebGpu",
-    enable_wayland = true,
+    enable_wayland = false,
+    use_ime = true,
     max_fps = 120,
     -- TODO: change this when unplugged?
     webgpu_power_preference = "HighPerformance",
