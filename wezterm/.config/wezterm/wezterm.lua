@@ -48,13 +48,14 @@ local config = {
     -- text
     font_size = 12,
     line_height = 1.2,
-    cursor_thickness = 1.0,
-    default_cursor_style = 'SteadyUnderline',
-    animation_fps = 1,
-    cursor_blink_ease_in = 'Constant',
-    cursor_blink_ease_out = 'Constant',
+    default_cursor_style = "BlinkingUnderline",
+    cursor_thickness = 2,
+    cursor_blink_rate = 700,
+    animation_fps = 60,
     color_scheme_dirs = { "~/.config/wezterm/colors" },
     default_prog = {'sesh', 'connect', 'Projects'},
+    xcursor_theme = "catppuccin-frappe-rosewater-cursors",
+    xcursor_size = 24,
     -- TODO: add binding to move from forward and backward with my pictures
     background = {
         w.get_wallpaper(wallpapers_glob),
@@ -63,16 +64,6 @@ local config = {
 
     font = wezterm.font_with_fallback({
         "MonoLisaVariableSC Nerd Font",
-        -- "DengXian",
-        -- "Departure Mono",
-        -- "GohuFont uni14 Nerd Font Mono",
-        -- "Monaspace Argon",
-        -- "Monaspace Krypton",
-        -- "Monaspace Neon",
-        -- "Monaspace Radon",
-        -- "Monaspace Xenon",
-        -- { family = "Apple Color Emoji" },
-        -- { family = "Noto Color Emoji" }, -- default?
         { family = "Symbols Nerd Font Mono" },
     }),
 
