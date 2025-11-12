@@ -8,35 +8,18 @@
 -- A GPU-accelerated cross-platform terminal emulator
 -- https://wezfurlong.org/wezterm/
 
+local wezterm = require("wezterm")
 local dark_opacity = 0.95
 local light_opacity = 0.65
-
-local wallpapers_glob = os.getenv("HOME") .. "/.config/wezterm/wallpapers/**"
 
 local b = require("utils/background")
 local cs = require("utils/color_scheme")
 local h = require("utils/helpers")
 local k = require("utils/keys")
 local w = require("utils/wallpaper")
-
-local wezterm = require("wezterm")
 local act = wezterm.action
 
--- TODO: config saving / loading
--- local config_file_path = os.getenv("HOME") .. "/.wezterm_config"
---
--- local function save_config_to_file(config)
--- 	local file = io.open(config_file_path, "w")
--- 	if file then
--- 		file:write(wezterm.serde.json_encode(config))
--- 		file:close()
--- 	else
--- 		wezterm.log_error("Failed to open config file for writing")
--- 	end
--- end
 
----@type Config
----@diagnostic disable: missing-fields
 local config = {
     -- rendering
     enable_wayland = false,
@@ -48,7 +31,7 @@ local config = {
     -- text
     font_size = 12,
     line_height = 1.2,
-    default_cursor_style = "BlinkingUnderline",
+    default_cursor_style = "SteadyUnderline",
     cursor_thickness = 2,
     cursor_blink_rate = 700,
     animation_fps = 60,
@@ -58,7 +41,7 @@ local config = {
     xcursor_size = 24,
     -- TODO: add binding to move from forward and backward with my pictures
     background = {
-        w.get_wallpaper(wallpapers_glob),
+        w.get_wallpaper(h.get_wallpaper_glob()),
         b.get_background(dark_opacity, light_opacity),
     },
 
