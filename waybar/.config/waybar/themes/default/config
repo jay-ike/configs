@@ -24,7 +24,7 @@
         "on-click-right": "sleep 0.1 && com.ml4w.welcome",
         "format": " ",
         "tooltip": false
-    },    
+    },
     // Waybar Themes
     "custom/waybarthemes": {
         "format": "Themes",
@@ -126,8 +126,9 @@
         "format-disconnected": "Disconnected ⚠",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
+
     "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
+        "scroll-step": 5,
         "format": "{volume}% {icon} {format_source}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
@@ -143,7 +144,8 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "pavucontrol"
+        "on-click": "pavucontrol",
+        "on-click-right": "easyeffects"
     },
     "custom/media": {
         "format": "{icon} {}",
