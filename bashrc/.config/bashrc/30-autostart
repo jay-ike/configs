@@ -8,3 +8,4 @@
 if [[ $(tty) == *"pts"* ]]; then
     fastfetch
 fi
+eval "$(keychain --eval --confirm ~/.ssh/id_ndl5ft)"
