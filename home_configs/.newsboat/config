@@ -1,0 +1,61 @@
+# ==========================================================
+# VIM NAVIGATION & KEYBINDINGS
+# ==========================================================
+
+# Unbind defaults to prevent collisions
+unbind-key j
+unbind-key k
+unbind-key h
+unbind-key l
+unbind-key g
+unbind-key G
+unbind-key u
+unbind-key d
+unbind-key /
+unbind-key n
+
+# Standard Vim movements
+bind-key j down            all
+bind-key k up              all
+bind-key h quit            all
+bind-key l open            all
+
+# Scrolling & Jumping
+bind-key g home            all
+bind-key G end             all
+bind-key u pageup         all
+bind-key d pagedown       all
+
+# Macros (Starts with a comma by default)
+# Press ',v' to open an article in a browser quickly
+macro v set browser "lynx" ; open-in-browser ; set browser "lynx"
+
+# ==========================================================
+# DARCULA COLOR SCHEME (v2.42 Optimized)
+# ==========================================================
+
+# Core UI Colors
+color background          color250   color235
+color listnormal          color250   color235
+color listfocus           color232   color215   bold
+color listnormal_unread   color141   color235   bold
+color listfocus_unread    color232   color215   bold
+
+# Status Bars & Headers
+color info                color110   color237
+color title               color222   color237   bold
+
+# Article View & Highlights
+color article             color250   color235
+
+# Syntax-like Highlights (Regex for links/quotes)
+highlight article "^>.*"  color114   color235   # Darcula Green for Quotes
+highlight article "https?://[^ ]+" color110 color235 underline # Darcula Blue for Links
+
+# ==========================================================
+# GENERAL SETTINGS
+# ==========================================================
+browser "lynx"
+show-keymap-hint no
+auto-reload yes
+feedlist-format "  %U  | %t"
