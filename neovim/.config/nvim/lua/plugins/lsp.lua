@@ -21,10 +21,9 @@ return {
                 "force",
                 {},
                 vim.lsp.protocol.make_client_capabilities(),
-                cmp_lsp.default_capabilities())
-            local lsp = require("lspconfig")
-
-            lsp.dartls.setup({
+                cmp_lsp.default_capabilities()
+            )
+            vim.lsp.config.dartls = {
                 cmd = { "dart", "language-server", "--protocol=lsp" },
                 filetypes = { "dart" },
                 init_options = {
@@ -40,7 +39,7 @@ return {
                         showTodos = true,
                     },
                 },
-            })
+            }
             require("mason").setup({
                 ui = {
                     icons = {
@@ -124,12 +123,11 @@ return {
                         })
                     end,
                     ["lua_ls"] = function()
-                        local lspconfig = require("lspconfig")
-                        lspconfig.lua_ls.setup {
+                        vim.lsp.config.lua_ls = {
                             capabilities = capabilities,
                             settings = {
                                 Lua = {
-                                    runtime = { version = "Lua 5.1" },
+                                    runtime = { version = "Lua 5.4" },
                                     diagnostics = {
                                         globals = { "bit", "vim", "it", "describe", "before_each", "after_each" },
                                     }
