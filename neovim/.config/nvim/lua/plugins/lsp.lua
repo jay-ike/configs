@@ -123,19 +123,20 @@ return {
                         })
                     end,
                     ["lua_ls"] = function()
-                        vim.lsp.config.lua_ls = {
-                            capabilities = capabilities,
-                            settings = {
-                                Lua = {
-                                    runtime = { version = "Lua 5.4" },
+                        vim.lsp.config["lua_ls"] = {
+                            cmd = {'lua-language-server'},
+                            filetypes = { 'lua' },
+                            root_markers = {'.luarc.json', '.git'},
+                            settings = { Lua = {
+                                    runtime = { version = "Lua 5.5" },
                                     diagnostics = {
                                         globals = { "bit", "vim", "it", "describe", "before_each", "after_each" },
                                     }
-                                }
-                            }
+                            } }
                         }
                     end,
-                }
+                },
+                automatic_installation = true
             })
 
             local luasnip = require('luasnip')
@@ -205,6 +206,7 @@ return {
                 underline = true,
                 update_in_insert = false
             })
+            vim.lsp.enable("lua_ls")
         end
     },
 }

@@ -51,3 +51,5 @@ vim.filetype.add({
 })
 
 vim.g.have_nerd_font = true
+vim.o.autocomplete = true
+vim.o.winborder = 'rounded'

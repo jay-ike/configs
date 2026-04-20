@@ -15,7 +15,7 @@ rocks_servers = {
 }
 
 -- Path to Lua interpreter (adjust if needed)
-lua_version = "5.4"
+lua_version = "5.5"
 lua_interpreter = "lua"
 
 -- Enable/disable verbose mode
