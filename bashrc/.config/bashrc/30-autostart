@@ -8,4 +8,5 @@
 if [[ $(tty) == *"pts"* ]]; then
     fastfetch
 fi
+if (nvm > /dev/null); then nvm use 24; fi
 eval "$(keychain --eval --confirm ~/.ssh/nd_cdb ~/.ssh/id_ndl5ft)"
