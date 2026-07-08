@@ -1,4 +1,13 @@
 {
+    "custom/tomat": {
+        "exec": "tomat status",
+        "interval": 1,
+        "return-type": "json",
+        "format": "{text}",
+        "tooltip": true,
+        "on-click": "tomat toggle",
+        "on-click-right": "tomat skip"
+    },
     "hyprland/workspaces": {
         "on-scroll-up": "hyprctl dispatch workspace r-1",
         "on-scroll-down": "hyprctl dispatch workspace r+1",
@@ -7,16 +16,16 @@
         "all-outputs": true,
         "format": "{icon}",
         "format-icons": {
-            "1": "  terminal",
-            "2": "󰈹  browsers",
-            "3": "  design",
-            "4": "󰎈  media",
-            "5": "  productivity",
-            "6": "󰉋  explorer",
-            "7": "  settings",
-            "8": "󰦑  office",
-            "9": "󰨞  code",
-            "10": "󰈙  docs",
+            "1": " terminal",
+            "2": "󰈹 browsers",
+            "3": " design",
+            "4": "󰎈 media",
+            "5": " work",
+            "6": "󰉋 explorer",
+            "7": " settings",
+            "8": "󰦑 office",
+            "9": "󰨞 code",
+            "10": "󰈙 docs",
             "default": "",
             "active": ""
         },
@@ -24,7 +33,6 @@
             "eDP-1": [
                 "1",
                 "4",
-                "5",
                 "10"
             ],
             "DP-1": [
@@ -37,7 +45,7 @@
     },
     "wlr/taskbar": {
         "format": "{icon}",
-        "icon-size": 18,
+        "icon-size": 12,
         "tooltip-format": "{title}",
         "on-click": "activate",
         "on-click-middle": "close",
@@ -133,13 +141,13 @@
         "format": "{icon}",
         "format-icons": {
             "notification": "<span rise='8pt'><span foreground='red'><sup></sup></span></span>",
-            "none": "",
+            "none": " ",
             "dnd-notification": "<span rise='8pt'><span foreground='red'><sup></sup></span></span>",
-            "dnd-none": "",
+            "dnd-none": " ",
             "inhibited-notification": "<span rise='8pt'><span foreground='red'><sup></sup></span></span>",
-            "inhibited-none": "",
+            "inhibited-none": " ",
             "dnd-inhibited-notification": "<span rise='8pt'><span foreground='red'><sup></sup></span></span>",
-            "dnd-inhibited-none": ""
+            "dnd-inhibited-none": " "
         },
         "return-type": "json",
         "exec-if": "which swaync-client",
@@ -167,13 +175,13 @@
         }
     },
     "tray": {
-        "icon-size": 21,
+        "icon-size": 18,
         "spacing": 10
     },
     "clock": {
         "format": "{:%H:%M %a}",
-        "on-click": "flatpak run org.gnome.calendar",
-        "timezone": "",
+        "on-click": "flatpak run org.gnome.Calendar",
+        "timezone": "GMT+1",
         "tooltip": false
     },
     "custom/system": {
@@ -223,7 +231,7 @@
             "custom/tools",
             "custom/cliphist",
             "custom/hypridle",
-            "custom/hyprshade"
+            "custom/wallpaper"
         ]
     },
     "group/links": {
@@ -265,11 +273,11 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{icon} {capacity}%",
+        "format": "{icon}{capacity}%",
         "format-charging": "󰂅 {capacity}%",
-        "format-plugged": "  {capacity}%",
-        "format-alt": "{icon}  {time}",
-        "format-good": "󱈏  {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{icon} {time}",
+        "format-good": "󱈏 {capacity}%",
         "format-full": "󱟢 full",
         "format-icons": [
             "󰁻 ",
@@ -314,12 +322,12 @@
         "on-click": "pavucontrol"
     },
     "bluetooth": {
-        "format": " {status}",
-        "format-disabled": "",
-        "format-off": "",
+        "format": "󰂯",
+        "format-disabled": "󱜡",
+        "format-off": "󰂲",
         "interval": 30,
         "on-click": "blueman-manager",
-        "format-no-controller": ""
+        "format-no-controller": "󱏎"
     },
     "user": {
         "format": "{user}",

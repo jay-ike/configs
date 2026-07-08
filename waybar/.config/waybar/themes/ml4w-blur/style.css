@@ -19,7 +19,7 @@
  * ----------------------------------------------------- */
 
 * {
-    font-family: "Fira Sans Semibold", "Font Awesome 6 Free", "Font Awesome 6 Brands", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-family: "MonoLisaVariableSC Nerd Font", "Symbols Nerd Font", Arial, sans-serif;
     border: none;
     border-radius: 0px;
 }
@@ -33,7 +33,7 @@ window#waybar {
 }
 
 .modules-left {
-    padding-left:14px;
+    padding-left: 14px;
 }
 
 /* -----------------------------------------------------
@@ -70,14 +70,14 @@ window#waybar {
     border-radius: 15px;
     min-width: 40px;
     transition: all 0.3s ease-in-out;
-    opacity:1.0;
+    opacity: 1.0;
 }
 
 #workspaces button:hover {
     color: @textcolor1;
     background: @workspacesbackground2;
     border-radius: 15px;
-    opacity:0.7;
+    opacity: 0.7;
 }
 
 /* -----------------------------------------------------
@@ -87,9 +87,9 @@ window#waybar {
 tooltip {
     border-radius: 16px;
     background-color: @backgroundlight;
-    opacity:0.9;
-    padding:20px;
-    margin:0px;
+    opacity: 0.9;
+    padding: 20px;
+    margin: 0px;
 }
 
 tooltip label {
@@ -105,14 +105,14 @@ tooltip label {
     margin: 8px 15px 8px 0px;
     padding: 2px 10px 0px 10px;
     border-radius: 12px;
-    color:@textcolor2;
-    font-size:16px;
-    font-weight:normal;
-    opacity:0.8;
+    color: @textcolor2;
+    font-size: 16px;
+    font-weight: normal;
+    opacity: 0.8;
 }
 
 window#waybar.empty #window {
-    background-color:transparent;
+    background-color: transparent;
 }
 
 /* -----------------------------------------------------
@@ -122,36 +122,36 @@ window#waybar.empty #window {
 #taskbar {
     background: @backgroundlight;
     margin: 6px 15px 6px 0px;
-    padding:0px;
+    padding: 0px;
     border-radius: 15px;
     font-weight: normal;
     font-style: normal;
-    opacity:0.8;
+    opacity: 0.8;
     border: 3px solid @backgroundlight;
 }
 
 #taskbar button {
-    margin:0;
+    margin: 0;
     border-radius: 15px;
     padding: 0px 5px 0px 5px;
 }
 
 #taskbar.empty {
-    background:transparent;
-    border:0;
-    padding:0;
-    margin:0;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    margin: 0;
 }
 
 /* -----------------------------------------------------
  * Modules
  * ----------------------------------------------------- */
 
-.modules-left > widget:first-child > #workspaces {
+.modules-left>widget:first-child>#workspaces {
     margin-left: 0;
 }
 
-.modules-right > widget:last-child > #workspaces {
+.modules-right>widget:last-child>#workspaces {
     margin-right: 0;
 }
 
@@ -223,11 +223,11 @@ window#waybar.empty #window {
 }
 
 #custom-settings {
-    margin-right:12px;
+    margin-right: 12px;
 }
 
 #custom-tools {
-    margin-right:12px;
+    margin-right: 12px;
 }
 
 #custom-hypridle.active {
@@ -289,18 +289,18 @@ window#waybar.empty #window {
     border-radius: 15px;
     padding: 0px 10px 0px 10px;
     margin: 8px 16px 8px 0px;
-    opacity:0.8;
-    border:3px solid @bordercolor;
+    opacity: 0.8;
+    border: 3px solid @bordercolor;
 }
 
 /* -----------------------------------------------------
  * Custom Notification
  * ----------------------------------------------------- */
 
- #custom-notification {
+#custom-notification {
     margin: 0px 13px 0px 0px;
-    padding:0px;
-    font-size:20px;
+    padding: 0px;
+    font-size: 20px;
     color: @iconcolor;
     opacity: 0.8;
 }
@@ -311,8 +311,8 @@ window#waybar.empty #window {
 
 #custom-exit {
     margin: 0px 13px 0px 0px;
-    padding:0px;
-    font-size:20px;
+    padding: 0px;
+    font-size: 20px;
     color: @iconcolor;
     opacity: 0.8;
 }
@@ -328,7 +328,7 @@ window#waybar.empty #window {
     border-radius: 15px;
     padding: 2px 10px 0px 10px;
     margin: 8px 15px 8px 0px;
-    opacity:0.8;
+    opacity: 0.8;
 }
 
 #custom-updates.green {
@@ -349,26 +349,29 @@ window#waybar.empty #window {
  * Hardware Group
  * ----------------------------------------------------- */
 
- #disk,#memory,#cpu,#language {
-    margin:0px;
-    padding:0px;
-    font-size:16px;
-    color:@iconcolor;
+#disk,
+#memory,
+#cpu,
+#language {
+    margin: 0px;
+    padding: 0px;
+    font-size: 16px;
+    color: @iconcolor;
 }
 
 #language {
-    margin-right:10px;
+    margin-right: 10px;
 }
 
 /* -----------------------------------------------------
  * Power Profiles Daemon
  * ----------------------------------------------------- */
 
- #power-profiles-daemon {
+#power-profiles-daemon {
     margin: 0px 13px 0px 0px;
-    padding:0px;
-    font-size:16px;
-    color:@iconcolor;
+    padding: 0px;
+    font-size: 16px;
+    color: @iconcolor;
 }
 
 /* -----------------------------------------------------
@@ -382,22 +385,22 @@ window#waybar.empty #window {
     border-radius: 15px;
     padding: 1px 10px 0px 10px;
     margin: 8px 15px 8px 0px;
-    opacity:0.8;
-    border:3px solid @bordercolor;
+    opacity: 0.8;
+    border: 3px solid @bordercolor;
 }
 
 /* -----------------------------------------------------
  * Backlight
  * ----------------------------------------------------- */
 
- #backlight {
+#backlight {
     background-color: @backgroundlight;
     font-size: 16px;
     color: @textcolor2;
     border-radius: 15px;
     padding: 2px 10px 0px 10px;
     margin: 8px 15px 8px 0px;
-    opacity:0.8;
+    opacity: 0.8;
 }
 
 /* -----------------------------------------------------
@@ -411,7 +414,7 @@ window#waybar.empty #window {
     border-radius: 15px;
     padding: 2px 10px 0px 10px;
     margin: 8px 15px 8px 0px;
-    opacity:0.8;
+    opacity: 0.8;
 }
 
 #pulseaudio.muted {
@@ -430,7 +433,7 @@ window#waybar.empty #window {
     border-radius: 15px;
     padding: 2px 10px 0px 10px;
     margin: 8px 15px 8px 0px;
-    opacity:0.8;
+    opacity: 0.8;
 }
 
 #network.ethernet {
@@ -447,14 +450,16 @@ window#waybar.empty #window {
  * Bluetooth
  * ----------------------------------------------------- */
 
- #bluetooth, #bluetooth.on, #bluetooth.connected {
+#bluetooth,
+#bluetooth.on,
+#bluetooth.connected {
     background-color: @backgroundlight;
     font-size: 16px;
     color: @textcolor2;
     border-radius: 15px;
     padding: 2px 10px 0px 10px;
     margin: 8px 15px 8px 0px;
-    opacity:0.8;
+    opacity: 0.8;
 }
 
 #bluetooth.off {
@@ -474,10 +479,11 @@ window#waybar.empty #window {
     border-radius: 15px;
     padding: 2px 15px 0px 10px;
     margin: 8px 15px 8px 0px;
-    opacity:0.8;
+    opacity: 0.8;
 }
 
-#battery.charging, #battery.plugged {
+#battery.charging,
+#battery.plugged {
     color: @textcolor2;
     background-color: @backgroundlight;
 }
@@ -508,10 +514,87 @@ window#waybar.empty #window {
     color: @textcolor3;
 }
 
-#tray > .passive {
+#tray>.passive {
     -gtk-icon-effect: dim;
 }
 
-#tray > .needs-attention {
+#tray>.needs-attention {
     -gtk-icon-effect: highlight;
 }
+
+/* Tomat styling for waybar */
+
+#custom-tomat {
+    font-size: 12px;
+    padding: 8px 12px;
+    margin: 8px;
+    border-radius: 24px;
+    font-weight: bold;
+    background-color: #cacaca;
+}
+
+/* Work sessions */
+#custom-tomat.work {
+    background-color: #ff6b6b;
+    color: #ffffff;
+}
+
+#custom-tomat.work-paused {
+    background-color: #ff9999;
+    color: #ffffff;
+}
+
+/* Break sessions */
+#custom-tomat.break {
+    background-color: #4ecdc4;
+    color: #ffffff;
+}
+
+#custom-tomat.break-paused {
+    background-color: #7dd3db;
+    color: #ffffff;
+}
+
+/* Long break sessions */
+#custom-tomat.long-break {
+    background-color: #45b7d1;
+    color: #ffffff;
+}
+
+#custom-tomat.long-break-paused {
+    background-color: #74c0db;
+    color: #ffffff;
+}
+
+/* Alternative color scheme (uncomment to use) */
+/*
+#custom-tomat.work {
+  background-color: #e74c3c;
+  color: #ffffff;
+}
+
+#custom-tomat.work-paused {
+  background-color: #c0392b;
+  color: #ffffff;
+}
+
+#custom-tomat.break {
+  background-color: #2ecc71;
+  color: #ffffff;
+}
+
+#custom-tomat.break-paused {
+  background-color: #27ae60;
+  color: #ffffff;
+}
+
+#custom-tomat.long-break {
+  background-color: #3498db;
+  color: #ffffff;
+}
+
+#custom-tomat.long-break-paused {
+  background-color: #2980b9;
+  color: #ffffff;
+}
+*/
