@@ -44,8 +44,9 @@ local config = {
     },
 
     font = wezterm.font_with_fallback({
-        "MonoLisaVariableSC Nerd Font",
-        { family = "Symbols Nerd Font Mono" },
+        {family="MonoLisaVariableSC Nerd Font", weight="Regular", stretch="Normal", style="Normal"},
+        {family="Symbols Nerd Font Mono", weight="Regular", stretch="Normal", style="Normal"},
+        "Noto Color Emoji"
     }),
 
     color_scheme = cs.get_color_scheme(),
