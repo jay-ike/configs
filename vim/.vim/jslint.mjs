@@ -11489,4 +11489,4 @@ export default Object.freeze(jslint_export);    // Export jslint as esm.
 jslint_import_meta_url = import.meta.url;
 
 // Run jslint_cli.
-jslint_cli({});
+jslint_cli({mode_cli: true, mode_noop: false});
