@@ -68,8 +68,7 @@ local function save_and_jslint(opts)
     return
   end
 
-  -- Updated errorformat matching file:line:col:errnum:message
-  local efm = "%f:%l:%c:%n:%m,%f.<node -e>.js:%n:%l:%c:%m,%f:%n:%l:%c:%m"
+  local efm = "%f:%*\\d:%l:%c:%m"
   local jslint_script = vim.fn.expand("$HOME/.vim/jslint.mjs")
 
   if vim.fn.filereadable(jslint_script) == 0 then
@@ -82,17 +81,15 @@ local function save_and_jslint(opts)
     { "node", jslint_script, "jslint_wrapper_vim", bufpath },
     { text = true },
     vim.schedule_wrap(function(obj)
-      -- Merge stdout and stderr since JSLint outputs warnings on stderr
       local raw_output = (obj.stdout or "") .. (obj.stderr or "")
       local lines = vim.split(raw_output, "\n", { trimempty = true })
 
       if #lines > 0 then
-        -- Send errors into Quickfix list & open Quickfix window
+        -- setqflist parses lines according to efm
         vim.fn.setqflist({}, "r", { title = "JSLint", lines = lines, efm = efm })
         vim.cmd("cwindow")
         vim.notify("JSLint found " .. #lines .. " issues.", vim.log.levels.WARN)
       else
-        -- Clean pass
         vim.fn.setqflist({}, "r", { title = "JSLint", items = {} })
         vim.cmd("cclose")
         vim.notify("JSLint passed cleanly!", vim.log.levels.INFO)

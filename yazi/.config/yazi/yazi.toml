@@ -23,102 +23,56 @@ ueberzug_offset = [0, 0, 0, 0]
 
 [opener]
 edit = [
-  { run = '$EDITOR "$@"', block = true, for = "unix" },
+  { run = '$EDITOR %s', block = true, for = "unix" },
   { run = 'code "%*"', orphan = true, for = "windows" },
 ]
 open = [
-  { run = 'xdg-open "$@"', desc = "Open", for = "linux" },
-  { run = 'open "$@"', desc = "Open", for = "macos" },
+  { run = 'xdg-open %s', desc = "Open", for = "unix" },
+  { run = 'open %s', desc = "Open", for = "macos" },
   { run = 'start "%1"', orphan = true, desc = "Open", for = "windows" },
 ]
 browse = [
-  {run = 'firefox-nightly --new-tab "$@"', desc = "Browse Webpage", orphan = true}
+  {run = 'chromium --new-tab %s', desc = "Browse Webpage", orphan = true}
 ]
 reveal = [
-  { run = 'open -R "$1"', desc = "Reveal", for = "macos" },
+  { run = 'open -R %s1', desc = "Reveal", for = "macos" },
   { run = 'explorer /select,%1', orphan = true, desc = "Reveal", for = "windows" },
-  { run = '''exiv2 "$1"; echo "Press enter to exit"; read''', block = true, desc = "Show EXIF", for = "unix" },
+  { run = '''exiv2 %s1; echo "Press enter to exit"; read''', block = true, desc = "Show EXIF", for = "unix" },
 ]
 extract = [
-  { run = 'unar "$1"', desc = "Extract here", for = "unix" },
+  { run = 'unar %s1', desc = "Extract here", for = "unix" },
   { run = 'unar "%1"', desc = "Extract here", for = "windows" },
 ]
 play = [
-  { run = 'mpv "$@"', orphan = true, for = "unix" },
+  { run = 'mpv %s', orphan = true, for = "unix" },
   { run = 'mpv "%1"', orphan = true, for = "windows" },
-  { run = '''mediainfo "$1"; echo "Press enter to exit"; read''', block = true, desc = "Show media info", for = "unix" },
+  { run = '''mediainfo %s1; echo "Press enter to exit"; read''', block = true, desc = "Show media info", for = "unix" },
 ]
 view = [
-    { run = 'haruna "$@"', desc = "View video" }
+    { run = 'haruna %s', desc = "View video", for = "unix" }
 ]
 
 [open]
 rules = [
-  { mime = "text/*", use = [
-    "edit",
-    "browse",
-    "reveal",
-  ] },
-  { mime = "image/*", use = [
-    "open",
-    "reveal",
-  ] },
-  { mime = "video/*", use = [
-    "view",
-    "reveal",
-  ] },
-  { mime = "audio/*", use = [
-    "play",
-    "reveal",
-  ] },
-  { mime = "inode/empty", use = [
-    "edit",
-    "reveal",
-  ] },
+  { mime = "text/*", use = [ "edit", "browse", "reveal" ] },
+  { mime = "image/*", use = [ "open", "reveal" ] },
+  { mime = "video/*", use = [ "view", "reveal" ] },
+  { mime = "audio/*", use = [ "play", "reveal" ] },
+  { mime = "inode/empty", use = [ "edit", "reveal" ] },
 
-  { mime = "application/json", use = [
-    "edit",
-    "reveal",
-  ] },
-  { mime = "*/javascript", use = [
-    "edit",
-    "reveal",
-  ] },
+  { mime = "application/json", use = [ "edit", "reveal" ] },
+  { mime = "*/javascript", use = [ "edit", "reveal" ] },
 
-  { mime = "application/zip", use = [
-    "extract",
-    "reveal",
+  { mime = "application/zip", use = [ "extract", "reveal" ] },
+  { mime = "application/gzip", use = [ "extract", "reveal" ] },
+  { mime = "application/x-tar", use = [ "extract", "reveal" ] },
+  { mime = "application/bzip", use = [ "extract", "reveal"
   ] },
-  { mime = "application/gzip", use = [
-    "extract",
-    "reveal",
-  ] },
-  { mime = "application/r", use = [
-    "extract",
-    "reveal",
-  ] },
-  { mime = "application/bzip", use = [
-    "extract",
-    "reveal",
-  ] },
-  { mime = "application/bzip2", use = [
-    "extract",
-    "reveal",
-  ] },
-  { mime = "application/7z-compressed", use = [
-    "extract",
-    "reveal",
-  ] },
-  { mime = "application/rar", use = [
-    "extract",
-    "reveal",
-  ] },
+  { mime = "application/bzip2", use = [ "extract", "reveal" ] },
+  { mime = "application/7z-compressed", use = [ "extract", "reveal" ] },
+  { mime = "application/rar", use = [ "extract", "reveal" ] },
 
-  { mime = "*", use = [
-    "open",
-    "view",
-    "reveal",
-  ] },
+  { mime = "*", use = [ "open", "view", "reveal"] },
 ]
 
 [tasks]
